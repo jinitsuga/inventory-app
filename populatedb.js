@@ -23,26 +23,41 @@ async function main() {
   await mongoose.connect(mongoDB);
 }
 
-const authors = [];
-const genres = [];
-const books = [];
-const bookinstances = [];
+const armor = [];
+const categories = [];
+const gems = [];
+const weapons = [];
 
-function authorCreate(first_name, family_name, d_birth, d_death, cb) {
-  authordetail = { first_name: first_name, family_name: family_name };
-  if (d_birth != false) authordetail.date_of_birth = d_birth;
-  if (d_death != false) authordetail.date_of_death = d_death;
+function armorCreate(
+  name,
+  price,
+  stock,
+  description,
+  category,
+  defense,
+  slot,
+  cb
+) {
+  armorpiecedetail = {
+    name: name,
+    price: price,
+    stock: stock,
+    description: description,
+    category: category,
+    defense: defense,
+    slot: slot,
+  };
 
-  const author = new Author(authordetail);
+  const armorPiece = new Armor(armorpiecedetail);
 
-  author.save(function (err) {
+  armorPiece.save(function (err) {
     if (err) {
       cb(err, null);
       return;
     }
-    console.log("New Author: " + author);
-    authors.push(author);
-    cb(null, author);
+    console.log("New Armor: " + armorPiece);
+    armor.push(armorPiece);
+    cb(null, armorPiece);
   });
 }
 

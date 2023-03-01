@@ -414,6 +414,44 @@ function createWeapons(cb) {
   );
 }
 
+function createGems(cb) {
+  async.series(
+    [
+      function (callback) {
+        gemCreate("Topaz", 40, 4, "Regular", "Gems", callback);
+      },
+      function (callback) {
+        gemCreate("Topaz", 55, 2, "Flawless", "Gems", callback);
+      },
+      function (callback) {
+        gemCreate("Diamond", 44, 3, "Regular", "Gems", callback);
+      },
+      function (callback) {
+        gemCreate("Diamond", 75, 2, "Perfect", "Gems", callback);
+      },
+      function (callback) {
+        gemCreate("Emerald", 35, 6, "Regular", "Gems", callback);
+      },
+      function (callback) {
+        gemCreate("Emerald", 48, 4, "Flawless", "Gems", callback);
+      },
+      function (callback) {
+        gemCreate("Ruby", 40, 3, "Regular", "Gems", callback);
+      },
+      function (callback) {
+        gemCreate("Ruby", 55, 3, "Flawless", "Gems", callback);
+      },
+      function (callback) {
+        gemCreate("Ruby", 70, 6, "Perfect", "Gems", callback);
+      },
+      function (callback) {
+        gemCreate("Sapphire", 53, 5, "Flawless", "Gems", callback);
+      },
+    ],
+    cb
+  );
+}
+
 function createBooks(cb) {
   async.parallel(
     [

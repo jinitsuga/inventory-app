@@ -5,8 +5,12 @@ const Schema = mongoose.Schema;
 const GemSchema = new Schema({
   name: { type: String, required: true },
   price: { type: Number, required: true },
-  description: { type: String, required: true },
   stock: { type: Number, required: true },
+  quality: {
+    type: String,
+    required: true,
+    enum: ["Regular", "Flawless", "Perfect"],
+  },
   category: { type: Schema.Types.ObjectId, ref: "Category" },
 });
 

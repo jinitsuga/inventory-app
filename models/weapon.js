@@ -12,7 +12,7 @@ const WeaponSchema = new Schema({
   type: {
     type: String,
     required: true,
-    enum: ["Swords", "Axes", "Spears", "Daggers", "Bows", "Crossbows"],
+    enum: ["Swords", "Axes", "Spears", "Daggers", "Bows"],
   },
 });
 

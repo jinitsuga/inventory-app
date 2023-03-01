@@ -286,35 +286,130 @@ function createArmor(cb) {
   );
 }
 
-function createGenreAuthors(cb) {
+function createWeapons(cb) {
   async.series(
     [
       function (callback) {
-        authorCreate("Patrick", "Rothfuss", "1973-06-06", false, callback);
+        weaponCreate(
+          "Abyss Greatsword",
+          66,
+          1,
+          "This greatsword belonged to Lord Gwyn's Knight Artorias.",
+          "Weapons",
+          235,
+          "Swords",
+          callback
+        );
       },
       function (callback) {
-        authorCreate("Ben", "Bova", "1932-11-8", false, callback);
+        weaponCreate(
+          "Uchigatana",
+          42,
+          2,
+          "Katana forged in an Eastern land. Known for its brisk slashing motions.",
+          "Weapons",
+          175,
+          "Swords",
+          callback
+        );
       },
       function (callback) {
-        authorCreate("Isaac", "Asimov", "1920-01-02", "1992-04-06", callback);
+        weaponCreate(
+          "Demon's Greataxe",
+          60,
+          1,
+          "Carved from the bones of fellow demons.",
+          "Weapons",
+          215,
+          "Axes",
+          callback
+        );
       },
       function (callback) {
-        authorCreate("Bob", "Billings", false, false, callback);
+        weaponCreate(
+          "Battle Axe",
+          40,
+          3,
+          "Standard battle axe. Inflicts regular damage, making it effective in various situations.",
+          "Weapons",
+          155,
+          "Axes",
+          callback
+        );
       },
       function (callback) {
-        authorCreate("Jim", "Jones", "1971-12-16", false, callback);
+        weaponCreate(
+          "Winged Spear",
+          48,
+          3,
+          "A long-hilted spear with a barbed point. Long reach, and can be used with shield up.",
+          "Weapons",
+          174,
+          "Spears",
+          callback
+        );
       },
       function (callback) {
-        genreCreate("Fantasy", callback);
+        weaponCreate(
+          "Silver Knight Spear",
+          55,
+          2,
+          "The silver knights of Anor Londo guard the city using this beautifully slender weapon.",
+          "Weapons",
+          195,
+          "Spears",
+          callback
+        );
       },
       function (callback) {
-        genreCreate("Science Fiction", callback);
+        weaponCreate(
+          "Parrying Dagger",
+          25,
+          4,
+          "A favorite of the knights of Carim, who are famous for fighting without a shield",
+          "Weapons",
+          90,
+          "Daggers",
+          callback
+        );
       },
       function (callback) {
-        genreCreate("French Poetry", callback);
+        weaponCreate(
+          "Priscilla's Dagger",
+          58,
+          2,
+          "Possessing the power of lifehunt, it dances about when wielded, in a fashion reminiscent of the white-robed painting guardians.",
+          "Weapons",
+          145,
+          "Daggers",
+          callback
+        );
+      },
+      function (callback) {
+        weaponCreate(
+          "Composite Bow",
+          32,
+          3,
+          "Composite bow emphasizing power, shorter range.",
+          "Weapons",
+          140,
+          "Bows",
+          callback
+        );
+      },
+      function (callback) {
+        weaponCreate(
+          "Black Bow of Pharis",
+          55,
+          2,
+          "Has a longer range than standard bows, but is more difficult to use.",
+          "Weapons",
+          160,
+          "Bows",
+          callback
+        );
       },
     ],
-    // optional callback
     cb
   );
 }

@@ -75,24 +75,24 @@ function categoryCreate(name, description, cb) {
   });
 }
 
-function bookCreate(title, summary, isbn, author, genre, cb) {
-  bookdetail = {
-    title: title,
-    summary: summary,
-    author: author,
-    isbn: isbn,
+function gemCreate(name, price, description, stock, category, cb) {
+  gemdetail = {
+    name: name,
+    price: price,
+    description: description,
+    stock: stock,
+    category: category,
   };
-  if (genre != false) bookdetail.genre = genre;
 
-  const book = new Book(bookdetail);
-  book.save(function (err) {
+  const gem = new Gem(gemdetail);
+  gem.save(function (err) {
     if (err) {
       cb(err, null);
       return;
     }
-    console.log("New Book: " + book);
-    books.push(book);
-    cb(null, book);
+    console.log("New Gem: " + gem);
+    gems.push(gem);
+    cb(null, gem);
   });
 }
 

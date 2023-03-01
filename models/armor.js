@@ -12,7 +12,7 @@ const ArmorSchema = new Schema({
   slot: {
     type: String,
     required: true,
-    enum: ["Head", "Chest", "Hands", "Legs", "Feet"],
+    enum: ["Head", "Chest", "Hands", "Legs"],
   },
 });
 

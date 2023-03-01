@@ -130,22 +130,161 @@ function weaponCreate(
 }
 
 function createCategories(cb) {
-  async.series([
-    function (callback) {
-      categoryCreate("Weapons", "A list of all our available weapons.");
-    },
-    function (callback) {
-      categoryCreate("Armor", "A list of all our pieces of armor in stock.");
-    },
-    function (callback) {
-      categoryCreate("Gems", "All of our available gems here.");
-    },
-  ],
-     cb
+  async.series(
+    [
+      function (callback) {
+        categoryCreate("Weapons", "A list of all our available weapons.");
+      },
+      function (callback) {
+        categoryCreate("Armor", "A list of all our pieces of armor in stock.");
+      },
+      function (callback) {
+        categoryCreate("Gems", "All of our available gems here.");
+      },
+    ],
+    cb
   );
 }
 
-function createArmor (cb)
+function createArmor(cb) {
+  async.series(
+    [
+      function (callback) {
+        armorCreate(
+          "Knight Helm",
+          25,
+          3,
+          "Helm equipment of a lower rank knight. Despite the thin metal used, the grooved texture gives them added protection.",
+          "Armor",
+          14,
+          "Head",
+          callback
+        );
+      },
+      function (callback) {
+        armorCreate(
+          "Shadow Mask",
+          28,
+          2,
+          "Black cloth mask worn by spooks from an Eastern land",
+          "Armor",
+          8,
+          "Head",
+          callback
+        );
+      },
+      function (callback) {
+        armorCreate(
+          "Catarina Helm",
+          30,
+          1,
+          "Distinctively shaped helm worn by the Knights of Catarina.",
+          "Armor",
+          16,
+          "Head",
+          callback
+        );
+      },
+      function (callback) {
+        armorCreate(
+          "Black Leather Armor",
+          36,
+          2,
+          "This armor is made of smooth black leather is extremely quiet, a good thing for those who hide in the shadows",
+          "Armor",
+          18,
+          "Chest",
+          callback
+        );
+      },
+      function (callback) {
+        armorCreate(
+          "Crimson Robe",
+          34,
+          3,
+          "Robe of the sorcerers who flooded New Londo to seal away the Dark wraiths",
+          "Armor",
+          10,
+          "Chest",
+          callback
+        );
+      },
+      function (callback) {
+        armorCreate(
+          "Silver Knight Armor",
+          45,
+          2,
+          "Armor of the Silver Knights who protect Anor Londo.",
+          "Armor",
+          32,
+          "Chest",
+          callback
+        );
+      },
+      function (callback) {
+        armorCreate(
+          "Black Leather Gloves",
+          18,
+          2,
+          "The leather itself is thick, offering a decent level of protection.",
+          "Armor",
+          14,
+          "Hands",
+          callback
+        );
+      },
+      function (callback) {
+        armorCreate(
+          "Paladin Gauntlets",
+          30,
+          2,
+          "Gauntlets of Leeroy, Paladin of the Catacombs.",
+          "Armor",
+          18,
+          "Hands",
+          callback
+        );
+      },
+      function (callback) {
+        armorCreate(
+          "Brigand Trousers",
+          20,
+          4,
+          "Worn by the brigands who raid mountain hamlets and attack travelers.",
+          "Armor",
+          18,
+          "Legs",
+          callback
+        );
+      },
+      function (callback) {
+        armorCreate(
+          "Hard Leather Boots",
+          23.5,
+          4,
+          "Boots made of thick leather. Very common type of protective gear.",
+          "Armor",
+          20,
+          "Legs",
+          callback
+        );
+      },
+      function (callback) {
+        armorCreate(
+          "Steel Leggings",
+          30,
+          3,
+          "Leggings of the Knights of Berenike, known for their heavy armaments and armor.",
+          "Armor",
+          34,
+          "Legs",
+          callback
+        );
+      },
+    ],
+    cb
+  );
+}
 
 function createGenreAuthors(cb) {
   async.series(

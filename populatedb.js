@@ -61,17 +61,17 @@ function armorCreate(
   });
 }
 
-function genreCreate(name, cb) {
-  const genre = new Genre({ name: name });
+function categoryCreate(name, description, cb) {
+  const category = new Category({ name: name, description: description });
 
-  genre.save(function (err) {
+  category.save(function (err) {
     if (err) {
       cb(err, null);
       return;
     }
-    console.log("New Genre: " + genre);
-    genres.push(genre);
-    cb(null, genre);
+    console.log("New Category: " + category);
+    categories.push(category);
+    cb(null, category);
   });
 }
 

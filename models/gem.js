@@ -13,3 +13,5 @@ const GemSchema = new Schema({
 GemSchema.virtual("link").get(function () {
   return `/shop/gem/${this._id}`;
 });
+
+module.exports = mongoose.model("Gem", GemSchema);

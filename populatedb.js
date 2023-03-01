@@ -96,26 +96,56 @@ function gemCreate(name, price, description, stock, category, cb) {
   });
 }
 
-function bookInstanceCreate(book, imprint, due_back, status, cb) {
-  bookinstancedetail = {
-    book: book,
-    imprint: imprint,
+function weaponCreate(
+  name,
+  price,
+  stock,
+  description,
+  category,
+  damage,
+  type,
+  cb
+) {
+  weapondetail = {
+    name: name,
+    price: price,
+    stock: stock,
+    description: description,
+    category: category,
+    damage: damage,
+    type: type,
   };
-  if (due_back != false) bookinstancedetail.due_back = due_back;
-  if (status != false) bookinstancedetail.status = status;
 
-  const bookinstance = new BookInstance(bookinstancedetail);
-  bookinstance.save(function (err) {
+  const weapon = new Weapon(weapondetail);
+  weapon.save(function (err) {
     if (err) {
-      console.log("ERROR CREATING BookInstance: " + bookinstance);
+      console.log("ERROR CREATING weapon: " + weapon);
       cb(err, null);
       return;
     }
-    console.log("New BookInstance: " + bookinstance);
-    bookinstances.push(bookinstance);
-    cb(null, book);
+    console.log("New Weapon: " + weapon);
+    weapons.push(weapon);
+    cb(null, weapon);
   });
 }
+
+function createCategories(cb) {
+  async.series([
+    function (callback) {
+      categoryCreate("Weapons", "A list of all our available weapons.");
+    },
+    function (callback) {
+      categoryCreate("Armor", "A list of all our pieces of armor in stock.");
+    },
+    function (callback) {
+      categoryCreate("Gems", "All of our available gems here.");
+    },
+  ],
+     cb
+  );
+}
+
+function createArmor (cb)
 
 function createGenreAuthors(cb) {
   async.series(

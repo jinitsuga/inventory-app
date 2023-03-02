@@ -7,7 +7,7 @@ const WeaponSchema = new Schema({
   price: { type: Number, required: true },
   stock: { type: Number, required: true },
   description: { type: String, required: true },
-  category: { type: Schema.Types.ObjectId, ref: "Category" },
+  category: { type: Schema.Types.ObjectId, ref: "Category", required: true },
   damage: { type: Number, required: true },
   type: {
     type: String,

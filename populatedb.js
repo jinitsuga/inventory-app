@@ -75,12 +75,12 @@ function categoryCreate(name, description, cb) {
   });
 }
 
-function gemCreate(name, price, description, stock, category, cb) {
+function gemCreate(name, price, stock, quality, category, cb) {
   gemdetail = {
     name: name,
     price: price,
-    description: description,
     stock: stock,
+    quality: quality,
     category: category,
   };
 
@@ -133,13 +133,21 @@ function createCategories(cb) {
   async.series(
     [
       function (callback) {
-        categoryCreate("Weapons", "A list of all our available weapons.");
+        categoryCreate(
+          "Weapons",
+          "A list of all our available weapons.",
+          callback
+        );
       },
       function (callback) {
-        categoryCreate("Armor", "A list of all our pieces of armor in stock.");
+        categoryCreate(
+          "Armor",
+          "A list of all our pieces of armor in stock.",
+          callback
+        );
       },
       function (callback) {
-        categoryCreate("Gems", "All of our available gems here.");
+        categoryCreate("Gems", "All of our available gems here.", callback);
       },
     ],
     cb
@@ -155,7 +163,7 @@ function createArmor(cb) {
           25,
           3,
           "Helm equipment of a lower rank knight. Despite the thin metal used, the grooved texture gives them added protection.",
-          "Armor",
+          categories[1],
           14,
           "Head",
           callback
@@ -167,7 +175,7 @@ function createArmor(cb) {
           28,
           2,
           "Black cloth mask worn by spooks from an Eastern land",
-          "Armor",
+          categories[1],
           8,
           "Head",
           callback
@@ -179,7 +187,7 @@ function createArmor(cb) {
           30,
           1,
           "Distinctively shaped helm worn by the Knights of Catarina.",
-          "Armor",
+          categories[1],
           16,
           "Head",
           callback
@@ -191,7 +199,7 @@ function createArmor(cb) {
           36,
           2,
           "This armor is made of smooth black leather is extremely quiet, a good thing for those who hide in the shadows",
-          "Armor",
+          categories[1],
           18,
           "Chest",
           callback
@@ -203,7 +211,7 @@ function createArmor(cb) {
           34,
           3,
           "Robe of the sorcerers who flooded New Londo to seal away the Dark wraiths",
-          "Armor",
+          categories[1],
           10,
           "Chest",
           callback
@@ -215,7 +223,7 @@ function createArmor(cb) {
           45,
           2,
           "Armor of the Silver Knights who protect Anor Londo.",
-          "Armor",
+          categories[1],
           32,
           "Chest",
           callback
@@ -227,7 +235,7 @@ function createArmor(cb) {
           18,
           2,
           "The leather itself is thick, offering a decent level of protection.",
-          "Armor",
+          categories[1],
           14,
           "Hands",
           callback
@@ -239,7 +247,7 @@ function createArmor(cb) {
           30,
           2,
           "Gauntlets of Leeroy, Paladin of the Catacombs.",
-          "Armor",
+          categories[1],
           18,
           "Hands",
           callback
@@ -251,7 +259,7 @@ function createArmor(cb) {
           20,
           4,
           "Worn by the brigands who raid mountain hamlets and attack travelers.",
-          "Armor",
+          categories[1],
           18,
           "Legs",
           callback
@@ -263,7 +271,7 @@ function createArmor(cb) {
           23.5,
           4,
           "Boots made of thick leather. Very common type of protective gear.",
-          "Armor",
+          categories[1],
           20,
           "Legs",
           callback
@@ -275,7 +283,7 @@ function createArmor(cb) {
           30,
           3,
           "Leggings of the Knights of Berenike, known for their heavy armaments and armor.",
-          "Armor",
+          categories[1],
           34,
           "Legs",
           callback
@@ -295,7 +303,7 @@ function createWeapons(cb) {
           66,
           1,
           "This greatsword belonged to Lord Gwyn's Knight Artorias.",
-          "Weapons",
+          categories[0],
           235,
           "Swords",
           callback
@@ -307,7 +315,7 @@ function createWeapons(cb) {
           42,
           2,
           "Katana forged in an Eastern land. Known for its brisk slashing motions.",
-          "Weapons",
+          categories[0],
           175,
           "Swords",
           callback
@@ -319,7 +327,7 @@ function createWeapons(cb) {
           60,
           1,
           "Carved from the bones of fellow demons.",
-          "Weapons",
+          categories[0],
           215,
           "Axes",
           callback
@@ -331,7 +339,7 @@ function createWeapons(cb) {
           40,
           3,
           "Standard battle axe. Inflicts regular damage, making it effective in various situations.",
-          "Weapons",
+          categories[0],
           155,
           "Axes",
           callback
@@ -343,7 +351,7 @@ function createWeapons(cb) {
           48,
           3,
           "A long-hilted spear with a barbed point. Long reach, and can be used with shield up.",
-          "Weapons",
+          categories[0],
           174,
           "Spears",
           callback
@@ -355,7 +363,7 @@ function createWeapons(cb) {
           55,
           2,
           "The silver knights of Anor Londo guard the city using this beautifully slender weapon.",
-          "Weapons",
+          categories[0],
           195,
           "Spears",
           callback
@@ -367,7 +375,7 @@ function createWeapons(cb) {
           25,
           4,
           "A favorite of the knights of Carim, who are famous for fighting without a shield",
-          "Weapons",
+          categories[0],
           90,
           "Daggers",
           callback
@@ -379,7 +387,7 @@ function createWeapons(cb) {
           58,
           2,
           "Possessing the power of lifehunt, it dances about when wielded, in a fashion reminiscent of the white-robed painting guardians.",
-          "Weapons",
+          categories[0],
           145,
           "Daggers",
           callback
@@ -391,7 +399,7 @@ function createWeapons(cb) {
           32,
           3,
           "Composite bow emphasizing power, shorter range.",
-          "Weapons",
+          categories[0],
           140,
           "Bows",
           callback
@@ -403,7 +411,7 @@ function createWeapons(cb) {
           55,
           2,
           "Has a longer range than standard bows, but is more difficult to use.",
-          "Weapons",
+          categories[0],
           160,
           "Bows",
           callback
@@ -414,38 +422,43 @@ function createWeapons(cb) {
   );
 }
 
+//     name: name,
+//     price: price,
+//     description: description,
+//     stock: stock,
+//     category: category,
 function createGems(cb) {
   async.series(
     [
       function (callback) {
-        gemCreate("Topaz", 40, 4, "Regular", "Gems", callback);
+        gemCreate("Topaz", 40, 4, "Regular", categories[2], callback);
       },
       function (callback) {
-        gemCreate("Topaz", 55, 2, "Flawless", "Gems", callback);
+        gemCreate("Topaz", 55, 2, "Flawless", categories[2], callback);
       },
       function (callback) {
-        gemCreate("Diamond", 44, 3, "Regular", "Gems", callback);
+        gemCreate("Diamond", 44, 3, "Regular", categories[2], callback);
       },
       function (callback) {
-        gemCreate("Diamond", 75, 2, "Perfect", "Gems", callback);
+        gemCreate("Diamond", 75, 2, "Perfect", categories[2], callback);
       },
       function (callback) {
-        gemCreate("Emerald", 35, 6, "Regular", "Gems", callback);
+        gemCreate("Emerald", 35, 6, "Regular", categories[2], callback);
       },
       function (callback) {
-        gemCreate("Emerald", 48, 4, "Flawless", "Gems", callback);
+        gemCreate("Emerald", 48, 4, "Flawless", categories[2], callback);
       },
       function (callback) {
-        gemCreate("Ruby", 40, 3, "Regular", "Gems", callback);
+        gemCreate("Ruby", 40, 3, "Regular", categories[2], callback);
       },
       function (callback) {
-        gemCreate("Ruby", 55, 3, "Flawless", "Gems", callback);
+        gemCreate("Ruby", 55, 3, "Flawless", categories[2], callback);
       },
       function (callback) {
-        gemCreate("Ruby", 70, 6, "Perfect", "Gems", callback);
+        gemCreate("Ruby", 70, 6, "Perfect", categories[2], callback);
       },
       function (callback) {
-        gemCreate("Sapphire", 53, 5, "Flawless", "Gems", callback);
+        gemCreate("Sapphire", 53, 5, "Flawless", categories[2], callback);
       },
     ],
     cb

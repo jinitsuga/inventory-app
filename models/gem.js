@@ -11,7 +11,7 @@ const GemSchema = new Schema({
     required: true,
     enum: ["Regular", "Flawless", "Perfect"],
   },
-  category: { type: Schema.Types.ObjectId, ref: "Category" },
+  category: { type: Schema.Types.ObjectId, ref: "Category", required: true },
 });
 
 GemSchema.virtual("link").get(function () {

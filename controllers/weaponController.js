@@ -35,3 +35,11 @@ exports.weapon_delete_post = (req, res, next) => {
   // emulates buying a wep (removes from shop)
   res.send("deleting weapon from shop' database");
 };
+
+exports.weapon_update_get = (req, res, next) => {
+  res.send("send form to update weapon");
+};
+
+exports.weapon_update_post = (req, res, next) => {
+  res.send("update weapon on shop's database");
+};

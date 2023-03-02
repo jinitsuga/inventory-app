@@ -48,6 +48,10 @@ router.get("/weapon/add", weapon_controller.weapon_add_get);
 
 router.post("/weapon/add", weapon_controller.weapon_add_post);
 
+router.get("/weapon/:id/update", weapon_controller.weapon_update_get);
+
+router.post("/weapon/:id/update", weapon_controller.weapon_update_post);
+
 router.get("/weapon/:id/delete", weapon_controller.weapon_delete_get);
 
 router.post("/weapon/:id/delete", weapon_controller.weapon_delete_post);

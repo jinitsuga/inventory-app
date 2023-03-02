@@ -37,6 +37,6 @@ app.use(function (err, req, res, next) {
   res.status(err.status || 500);
   res.render("error");
 });
-console.log(process.env.PORT);
+console.log(process.env.DB_DATA);
 
 module.exports = app;

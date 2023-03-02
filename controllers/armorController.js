@@ -5,7 +5,7 @@ const async = require("async");
 
 // Show all Armors
 
-exports.armors_list = (req, res, next) => {
+exports.armor_list = (req, res, next) => {
   res.send("yet to implement list of Armor");
 };
 // Show details of a Armor
@@ -18,12 +18,20 @@ exports.armor_type = (req, res, next) => {
 };
 // add Armor
 
-exports.armor_add = (req, res, next) => {
+exports.armor_add_get = (req, res, next) => {
   // simulates selling a Armor to shop
-  res.send("adds a Armor to the shop");
+  res.send("send form to add an Armor to the shop");
+};
+exports.armor_add_post = (req, res, next) => {
+  // simulates selling a Armor to shop
+  res.send("add an Armor to the shop database");
 };
 // delete Armor
-exports.armor_delete = (req, res, next) => {
+exports.armor_delete_get = (req, res, next) => {
   // emulates buying a wep (removes from shop)
-  res.send("deleteing Armor from shop");
+  res.send("send form for deleting Armor from shop");
+};
+exports.armor_delete_post = (req, res, next) => {
+  // emulates buying a wep (removes from shop)
+  res.send("Delete Armor from shop on database");
 };

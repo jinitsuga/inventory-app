@@ -23,3 +23,17 @@ router.post("/category/add", category_controller.category_add_post);
 router.get("/category/delete", category_controller.category_delete_get);
 
 router.post("/category/delete", category_controller.category_delete_post);
+
+// Armor related routes
+
+router.get("/armor", armor_controller.armor_list);
+
+router.get("/armor/:id", armor_controller.armor_details);
+
+router.get("/armor/add", armor_controller.armor_add_get);
+
+router.post("/armor/add", armor_controller.armor_add_post);
+
+router.get("/armor/delete", armor_controller.armor_delete_get);
+
+router.post("/armor/delete", armor_controller.armor_delete_post);

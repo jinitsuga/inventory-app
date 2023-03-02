@@ -18,12 +18,20 @@ exports.weapons_type = (req, res, next) => {
 };
 // add weapon
 
-exports.weapon_add = (req, res, next) => {
+exports.weapon_add_get = (req, res, next) => {
   // simulates selling a weapon to shop
-  res.send("adds a weapon to the shop");
+  res.send("send form to add a weapon to the shop");
+};
+exports.weapon_add_post = (req, res, next) => {
+  // simulates selling a weapon to shop
+  res.send("adds a weapon to the shop's database");
 };
 // delete weapon
-exports.weapon_delete = (req, res, next) => {
+exports.weapon_delete_get = (req, res, next) => {
   // emulates buying a wep (removes from shop)
-  res.send("deleteing weapon from shop");
+  res.send("send form to delete weapon from shop");
+};
+exports.weapon_delete_post = (req, res, next) => {
+  // emulates buying a wep (removes from shop)
+  res.send("deleting weapon from shop' database");
 };

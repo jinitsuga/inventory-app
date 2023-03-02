@@ -20,9 +20,9 @@ router.get("/category/add", category_controller.category_add_get);
 
 router.post("/category/add", category_controller.category_add_post);
 
-router.get("/category/delete", category_controller.category_delete_get);
+router.get("/category/:id/delete", category_controller.category_delete_get);
 
-router.post("/category/delete", category_controller.category_delete_post);
+router.post("/category/:id/delete", category_controller.category_delete_post);
 
 // Armor related routes
 
@@ -34,6 +34,20 @@ router.get("/armor/add", armor_controller.armor_add_get);
 
 router.post("/armor/add", armor_controller.armor_add_post);
 
-router.get("/armor/delete", armor_controller.armor_delete_get);
+router.get("/armor/:id/delete", armor_controller.armor_delete_get);
 
-router.post("/armor/delete", armor_controller.armor_delete_post);
+router.post("/armor/:id/delete", armor_controller.armor_delete_post);
+
+// Weapon related routes
+
+router.get("/weapons", weapon_controller.weapons_list);
+
+router.get("/weapon/:id", weapon_controller.weapon_details);
+
+router.get("/weapon/add", weapon_controller.weapon_add_get);
+
+router.post("/weapon/add", weapon_controller.weapon_add_post);
+
+router.get("/weapon/:id/delete", weapon_controller.weapon_delete_get);
+
+router.post("/weapon/:id/delete", weapon_controller.weapon_delete_post);

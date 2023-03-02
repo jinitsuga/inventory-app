@@ -13,7 +13,7 @@ exports.gem_details = (req, res, next) => {
   res.send("gem details");
 };
 // Show gems per type
-exports.type = (req, res, next) => {
+exports.gem_type = (req, res, next) => {
   res.send("show gems per type");
 };
 // add gem

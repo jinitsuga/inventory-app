@@ -18,9 +18,14 @@ exports.gem_type = (req, res, next) => {
 };
 // add gem
 
-exports.gem_add = (req, res, next) => {
+exports.gem_add_get = (req, res, next) => {
   // simulates selling a gem to shop
-  res.send("adds a gem to the shop");
+  res.send("sends form for adding a gem to the shop");
+};
+
+exports.gem_add_post = (req, res, next) => {
+  // simulates selling a gem to shop
+  res.send("adds a gem to the shop DB");
 };
 // delete gem
 exports.gem_delete = (req, res, next) => {

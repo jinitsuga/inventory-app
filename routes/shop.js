@@ -55,3 +55,11 @@ router.post("/weapon/:id/update", weapon_controller.weapon_update_post);
 router.get("/weapon/:id/delete", weapon_controller.weapon_delete_get);
 
 router.post("/weapon/:id/delete", weapon_controller.weapon_delete_post);
+
+// Gem routes
+
+router.get("/gems", gem_controller.gems_list);
+
+router.get("gem/:id", gem_controller.gem_details);
+
+router.get("/gem/add", gem_controller.gem_add_get);

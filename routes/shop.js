@@ -63,3 +63,13 @@ router.get("/gems", gem_controller.gems_list);
 router.get("gem/:id", gem_controller.gem_details);
 
 router.get("/gem/add", gem_controller.gem_add_get);
+
+router.post("/gem/add", gem_controller.gem_add_post);
+
+router.get("/gem/:id/delete", gem_controller.gem_delete_get);
+
+router.post("/gem/:id/delete", gem_controller.gem_delete_post);
+
+router.get("/gem/:id/update", gem_controller.update_get);
+
+router.post("/gem/:id/update", gem_controller.gem_update_post);

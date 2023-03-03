@@ -28,7 +28,18 @@ exports.gem_add_post = (req, res, next) => {
   res.send("adds a gem to the shop DB");
 };
 // delete gem
-exports.gem_delete = (req, res, next) => {
-  // emulates buying a wep (removes from shop)
-  res.send("deleteing gem from shop");
+exports.gem_delete_get = (req, res, next) => {
+  res.send("sends form for deleteing gem from shop");
+};
+
+exports.gem_delete_post = (req, res, next) => {
+  res.send("Delete gem from shop db");
+};
+
+exports.gem_update_get = (req, res, next) => {
+  res.send("sending form to update gem info");
+};
+
+exports.gem_update_post = (req, res, next) => {
+  res.send("updates gem info on database");
 };

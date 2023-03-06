@@ -6,7 +6,17 @@ const async = require("async");
 // Show all Armors
 
 exports.armor_list = (req, res, next) => {
-  res.send("yet to implement list of Armor");
+  Armor.find({}, "name")
+    .sort({ slot: "ascending" })
+    .exec(function (err, list_armor) {
+      if (err) {
+        return next(err);
+      }
+      res.render("armor_list", {
+        title: "All pieces of armor available",
+        armor_list: list_armor,
+      });
+    });
 };
 // Show details of a Armor
 exports.armor_details = (req, res, next) => {

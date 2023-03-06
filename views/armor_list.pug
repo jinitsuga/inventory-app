@@ -1,0 +1,12 @@
+extends layout 
+
+block content 
+    h1= title 
+
+        ul
+            each armor in armor_list 
+                li 
+                    a(href=armor.link) #{armor.name}
+            
+            else  
+                li there are no pieces of armor available.

@@ -55,6 +55,4 @@ app.use(function (err, req, res, next) {
 
 const Schema = mongoose.Schema;
 
-console.log(process.env.DB_DATA);
-
 module.exports = app;

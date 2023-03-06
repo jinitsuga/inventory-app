@@ -3,3 +3,9 @@ extends layout
 block content
   h1= title
   p Welcome to #{title}
+
+  div 
+    ul
+      li Total number of weapons: #{data.weapon_count}
+      li Number of armor pieces: #{data.armor_count}
+      li Number of available gems: #{data.gem_count}

@@ -23,8 +23,8 @@ exports.index = (req, res, next) => {
       if (err) {
         return next(err);
       }
-      res.render("homepage", {
-        title: "Dark Souls vendor 123",
+      res.render("index", {
+        title: "Irina of Carim (merchant)",
         error: err,
         data: results,
       });

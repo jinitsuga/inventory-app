@@ -70,7 +70,7 @@ router.get("/gem/:id/delete", gem_controller.gem_delete_get);
 
 router.post("/gem/:id/delete", gem_controller.gem_delete_post);
 
-router.get("/gem/:id/update", gem_controller.update_get);
+router.get("/gem/:id/update", gem_controller.gem_update_get);
 
 router.post("/gem/:id/update", gem_controller.gem_update_post);
 

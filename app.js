@@ -3,13 +3,25 @@ var express = require("express");
 var path = require("path");
 var cookieParser = require("cookie-parser");
 var logger = require("morgan");
+const mongoose = require("mongoose");
 
 var indexRouter = require("./routes/index");
 var usersRouter = require("./routes/users");
 
 var app = express();
 
+mongoose.set("strictQuery", false);
+
+const mongoDB = process.env.DB_DATA;
+console.log(process.env.DB_DATA);
+
+main().catch((err) => console.log(err));
+async function main() {
+  await mongoose.connect(mongoDB);
+}
+
 const shopRouter = require("./routes/shop");
+const { mainModule } = require("process");
 
 // view engine setup
 app.set("views", path.join(__dirname, "views"));
@@ -40,6 +52,9 @@ app.use(function (err, req, res, next) {
   res.status(err.status || 500);
   res.render("error");
 });
+
+const Schema = mongoose.Schema;
+
 console.log(process.env.DB_DATA);
 
 module.exports = app;

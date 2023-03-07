@@ -20,7 +20,15 @@ exports.armor_list = (req, res, next) => {
 };
 // Show details of a Armor
 exports.armor_details = (req, res, next) => {
-  res.send("Armor details");
+  Armor.findById(req.params.id).exec(function (err, details) {
+    if (err) {
+      return next(err);
+    }
+    res.render("armor_details", {
+      title: details.name,
+      info: details,
+    });
+  });
 };
 // Show armor per type
 exports.armor_type = (req, res, next) => {

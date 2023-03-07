@@ -1,0 +1,23 @@
+extends layout 
+
+block content 
+    h1= title
+
+    h5 #{info.description}.
+    br
+    ul 
+        li 
+           p #[strong Price]: #{info.price}
+        li 
+            if info.stock
+             p #[strong Available]: Yes
+            else 
+             p #[strong Available]: No
+        li 
+            p #[strong Defense]: #{info.defense}
+        li 
+            p #[strong Slot]: #{info.slot}
+        
+
+       
+        

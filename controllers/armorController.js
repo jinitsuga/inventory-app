@@ -30,15 +30,12 @@ exports.armor_details = (req, res, next) => {
     });
   });
 };
-// Show armor per type
-exports.armor_type = (req, res, next) => {
-  res.send("show Armors per type");
-};
-// add Armor
 
 exports.armor_add_get = (req, res, next) => {
-  // simulates selling a Armor to shop
-  res.send("send form to add an Armor to the shop");
+  res.render("armor_add", {
+    title: "Add a piece of armor to the shop",
+    slots: ["Head", "Chest", "Legs", "Hands"],
+  });
 };
 exports.armor_add_post = (req, res, next) => {
   // simulates selling a Armor to shop

@@ -64,6 +64,8 @@ exports.armor_add_post = [
     .isLength({ min: 1 })
     .escape(),
   body("defense", "Must specify defense").trim().isLength({ min: 0 }).escape(),
+  body("category", "Select a category").trim().isLength({ min: 1 }).escape(),
+
   (req, res, next) => {
     const errors = validationResult(req);
     const armorPiece = new Armor({
@@ -71,6 +73,36 @@ exports.armor_add_post = [
       price: req.body.price,
       stock: req.body.stock,
       description: req.body.description,
+      defense: req.body.defense,
+      category: req.body.category,
+    });
+
+    if (!errors.isEmpty()) {
+      async.parallel(
+        {
+          categories(callback) {
+            Category.find(callback);
+          },
+        },
+        (err, results) => {
+          if (err) {
+            return next(err);
+          }
+          res.render("armor_add", {
+            title: "Add a piece of armor",
+            slots: ["Head", "Chest", "Legs", "Hands"],
+            categories: results.categories,
+            errors: errors.array(),
+          });
+        }
+      );
+      return;
+    }
+    armorPiece.save((err) => {
+      if (err) {
+        return next(err);
+      }
+      res.redirect(armorPiece.link);
     });
   },
 ];

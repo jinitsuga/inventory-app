@@ -28,11 +28,11 @@ router.post("/category/:id/delete", category_controller.category_delete_post);
 
 router.get("/armor", armor_controller.armor_list);
 
-router.get("/armor/:id", armor_controller.armor_details);
-
 router.get("/armor/add", armor_controller.armor_add_get);
 
 router.post("/armor/add", armor_controller.armor_add_post);
+
+router.get("/armor/:id/", armor_controller.armor_details);
 
 router.get("/armor/:id/delete", armor_controller.armor_delete_get);
 

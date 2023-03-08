@@ -110,8 +110,21 @@ exports.armor_add_post = [
 ];
 // delete Armor
 exports.armor_delete_get = (req, res, next) => {
-  // emulates buying a wep (removes from shop)
-  res.send("send form for deleting Armor from shop");
+  async.parallel(
+    {
+      armor(callback) {
+        Armor.findById(req.params.id).exec(callback);
+      },
+    },
+    (err, result) => {
+      if (err) {
+        return next(err);
+      }
+      res.render("armor_delete", {
+        title: "Delete an armor piece",
+      });
+    }
+  );
 };
 exports.armor_delete_post = (req, res, next) => {
   // emulates buying a wep (removes from shop)

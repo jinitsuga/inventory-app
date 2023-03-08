@@ -7,7 +7,7 @@ const ArmorSchema = new Schema({
   price: { type: Number, required: true },
   stock: { type: Number, required: true },
   description: { type: String, required: true },
-  category: { type: Schema.Types.ObjectId, ref: "Category", required: true },
+  category: { type: Schema.Types.ObjectId, ref: "Category" },
   defense: { type: Number, required: true },
   slot: {
     type: String,

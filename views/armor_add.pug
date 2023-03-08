@@ -27,11 +27,8 @@ block content
                 select(type='select' placeholder='select a slot' required='true' name='slot')
                     for slot in slots 
                         option(value=slot selected=false) #{slot}
-             div 
-                label(for='category') Category: 
-                select(type='select' placeholder='select a category' required='true' name='category')
-                    for cat in categories 
-                        option(value='' selected=false) #{cat.name}
+        
+             button(type='submit') Submit  
 
         if errors
             ul

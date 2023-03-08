@@ -4,6 +4,7 @@ const Category = require("../models/category");
 const { body, validationResult } = require("express-validator");
 
 const async = require("async");
+const { isObjectIdOrHexString } = require("mongoose");
 
 // Show all Armors
 
@@ -64,7 +65,7 @@ exports.armor_add_post = [
     .isLength({ min: 1 })
     .escape(),
   body("defense", "Must specify defense").trim().isLength({ min: 0 }).escape(),
-  body("category", "Select a category").trim().isLength({ min: 1 }).escape(),
+  body("category", "Select a category"),
 
   (req, res, next) => {
     const errors = validationResult(req);
@@ -74,7 +75,7 @@ exports.armor_add_post = [
       stock: req.body.stock,
       description: req.body.description,
       defense: req.body.defense,
-      category: req.body.category,
+      slot: req.body.slot,
     });
 
     if (!errors.isEmpty()) {
@@ -86,6 +87,7 @@ exports.armor_add_post = [
         },
         (err, results) => {
           if (err) {
+            console.log("LOLLLL");
             return next(err);
           }
           res.render("armor_add", {

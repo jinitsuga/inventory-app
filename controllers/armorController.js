@@ -34,10 +34,23 @@ exports.armor_details = (req, res, next) => {
 };
 
 exports.armor_add_get = (req, res, next) => {
-  res.render("armor_add", {
-    title: "Add a piece of armor to the shop",
-    slots: ["Head", "Chest", "Legs", "Hands"],
-  });
+  async.parallel(
+    {
+      categories(callback) {
+        Category.find(callback);
+      },
+    },
+    (err, results) => {
+      if (err) {
+        return next(err);
+      }
+      res.render("armor_add", {
+        title: "Add a piece of armor",
+        slots: ["Head", "Chest", "Legs", "Hands"],
+        categories: results.categories,
+      });
+    }
+  );
 };
 exports.armor_add_post = [
   body("name", "Must include item's name").trim().isLength({ min: 1 }).escape(),
@@ -51,6 +64,15 @@ exports.armor_add_post = [
     .isLength({ min: 1 })
     .escape(),
   body("defense", "Must specify defense").trim().isLength({ min: 0 }).escape(),
+  (req, res, next) => {
+    const errors = validationResult(req);
+    const armorPiece = new Armor({
+      name: req.body.name,
+      price: req.body.price,
+      stock: req.body.stock,
+      description: req.body.description,
+    });
+  },
 ];
 // delete Armor
 exports.armor_delete_get = (req, res, next) => {

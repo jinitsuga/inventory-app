@@ -6,16 +6,33 @@ const async = require("async");
 // Show all weapons
 
 exports.weapons_list = (req, res, next) => {
-  res.send("yet to implement list of weapons");
+  Weapon.find({}, "name")
+    .sort({ type: "ascending" })
+    .exec(function (err, wep_list) {
+      if (err) {
+        return next(err);
+      }
+      res.render("weapon_list", {
+        title: "List of all available weapons",
+        weapons: wep_list,
+      });
+    });
 };
 // Show details of a weapon
 exports.weapon_details = (req, res, next) => {
-  res.send("weapon details");
+  Weapon.findById(req.params.id).exec(function (err, details) {
+    if (err) {
+      return next(err);
+    }
+    res.render("weapon_details", {
+      title: details.name,
+      weapon: details,
+    });
+  });
 };
+
 // Show weapons per type
-exports.weapons_type = (req, res, next) => {
-  res.send("show weapons per type");
-};
+exports.weapons_type = (req, res, next) => {};
 // add weapon
 
 exports.weapon_add_get = (req, res, next) => {

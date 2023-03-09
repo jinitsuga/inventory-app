@@ -128,6 +128,10 @@ exports.armor_delete_get = (req, res, next) => {
   );
 };
 exports.armor_delete_post = (req, res, next) => {
-  // emulates buying a wep (removes from shop)
-  res.send("Delete Armor from shop on database");
+  Armor.findByIdAndRemove(req.body.pieceid, (err) => {
+    if (err) {
+      return next(err);
+    }
+    res.redirect("/shop/armor");
+  });
 };

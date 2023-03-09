@@ -9,3 +9,9 @@ block content
         ul 
         li #[strong #{piece.name}] 
         li #[strong Stock: #{piece.stock}]
+
+        h5 Are you sure?
+        
+        form(method='POST' action='')
+            input(type='hidden' value=piece._id name='pieceid' required=true)
+            button(type='submit') Delete

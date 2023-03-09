@@ -1,0 +1,13 @@
+extends layout 
+
+block content 
+    h1= title 
+
+    ul 
+        each wep in weapons
+            li 
+                a(href=wep.link) #[strong #{wep.name}]
+        
+        else 
+            p No weapons available.
+    

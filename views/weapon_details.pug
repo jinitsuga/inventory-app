@@ -1,0 +1,18 @@
+extends layout 
+
+block content 
+
+    h1= title
+
+    h5= weapon.description
+    br
+
+    ul 
+        li
+          p #[strong Price: #{weapon.price} ]
+        li
+          p #[strong Available? #{weapon.stock > 0 ? 'Yes' : 'No'} ]
+        li
+          p #[strong Damage: #{weapon.damage} ]
+        li
+          p #[strong Type: #{weapon.type} ]

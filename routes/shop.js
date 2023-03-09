@@ -42,7 +42,7 @@ router.post("/armor/:id/delete", armor_controller.armor_delete_post);
 
 router.get("/weapons", weapon_controller.weapons_list);
 
-router.get("/weapon/:id", weapon_controller.weapon_details);
+router.get("/weapons/:id", weapon_controller.weapon_details);
 
 router.get("/weapon/add", weapon_controller.weapon_add_get);
 

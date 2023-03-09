@@ -121,7 +121,8 @@ exports.armor_delete_get = (req, res, next) => {
         return next(err);
       }
       res.render("armor_delete", {
-        title: "Delete an armor piece",
+        title: "Deleting armor",
+        piece: result.armor,
       });
     }
   );

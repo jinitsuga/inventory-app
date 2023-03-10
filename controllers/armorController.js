@@ -65,7 +65,7 @@ exports.armor_add_post = [
     .isLength({ min: 1 })
     .escape(),
   body("defense", "Must specify defense").trim().isLength({ min: 0 }).escape(),
-  body("category", "Select a category"),
+  body("slot", "Please select a slot").trim().isLength({ min: 1 }).escape(),
 
   (req, res, next) => {
     const errors = validationResult(req);
@@ -160,3 +160,49 @@ exports.armor_update_get = (req, res, next) => {
     }
   );
 };
+
+exports.armor_update_post = [
+  body("name", "Must include item's name").trim().isLength({ min: 1 }).escape(),
+  body("price", "Must specifiy price").trim().isLength({ min: 1 }).escape(),
+  body("stock", "Must specify stock amount")
+    .trim()
+    .isLength({ min: 0 })
+    .escape(),
+  body("description", "Must include a description")
+    .trim()
+    .isLength({ min: 1 })
+    .escape(),
+  body("defense", "Must specify defense").trim().isLength({ min: 0 }).escape(),
+  body("slot", "Please select a slot").trim().isLength({ min: 1 }).escape(),
+
+  (req, res, next) => {
+    const errors = validationResult(req);
+
+    const armorPiece = new Armor({
+      name: req.body.name,
+      price: req.body.price,
+      stock: req.stock,
+      description: req.body.description,
+      defense: req.body.defense,
+      slot: req.body.slot,
+      _id: req.params.id,
+    });
+
+    if (!errors.isEmpty()) {
+      res.render("armor_add", {
+        title: "Add a piece of armor",
+        slots: ["Head", "Chest", "Legs", "Hands"],
+        categories: results.categories,
+        errors: errors.array(),
+        armorPiece: armorPiece,
+      });
+    }
+    return;
+  },
+  Armor.findByIdAndUpdate(req.params.id, armorPiece, {}, (err, piece) => {
+    if (err) {
+      return next(err);
+    }
+    res.redirect(piece.link);
+  }),
+];

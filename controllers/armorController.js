@@ -135,3 +135,28 @@ exports.armor_delete_post = (req, res, next) => {
     res.redirect("/shop/armor");
   });
 };
+
+exports.armor_update_get = (req, res, next) => {
+  async.parallel(
+    {
+      armor(callback) {
+        Armor.findById(req.params.id).exec(callback);
+      },
+    },
+    (err, results) => {
+      if (err) {
+        return next(err);
+      }
+
+      if (results.armor == null) {
+        const error = new Error("armor not found");
+        error.status = 404;
+        return next(error);
+      }
+      res.render("armor_add", {
+        title: "Update armor info",
+        armor: results.armor,
+      });
+    }
+  );
+};

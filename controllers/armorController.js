@@ -156,7 +156,8 @@ exports.armor_update_get = (req, res, next) => {
       }
       res.render("armor_add", {
         title: "Update armor info",
-        armor: results.armor,
+        slots: ["Head", "Chest", "Legs", "Hands"],
+        armorPiece: results.armor,
       });
     }
   );

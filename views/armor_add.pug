@@ -3,34 +3,34 @@ extends layout
 block content 
     h1= title 
     
-        form(method='POST' action='')
-             div
-                 label(for='name') Name: 
-                  input(type='text', placeholder="Piece of armor's name" name='name' required='true' value=(undefined===armorPiece ? '' : armorPiece.name))
+    form(method='POST' action='')
+         div
+            label(for='name') Name: 
+            input(type='text', placeholder="Piece of armor's name" name='name' required='true' value=(undefined===armorPiece ? '' : armorPiece.name))
                 
-             div 
-                 label(for='price') Price: 
-                 input(type='number', placeholder='Item price' name='price' required='true')
+         div 
+            label(for='price') Price: 
+            input(type='number', placeholder='Item price' name='price' required='true')
 
-             div 
-                 label(for='stock') Stock: 
-                 input(type='number', placeholder='number of items in stock' name='stock' required='true')
+         div 
+            label(for='stock') Stock: 
+            input(type='number', placeholder='number of items in stock' name='stock' required='true')
                 
-             div
-                 label(for='description') Description: 
-                 input(type='textarea', placeholder="Item's description" name='description' required='true' value=(undefined===armorPiece ? '' : armorPiece.description))
-             div    
-                label(for='defense') Defense: 
-                input(type='number', placeholder="Item's armor rating" name='defense' required='true' value=(undefined===aromrPiece ? '' : armorPiece.defense))
-             div 
-                label(for='slot') Slot: 
-                select(type='select' placeholder='select a slot' required='true' name='slot')
-                    for slot in slots 
-                        option(value=slot selected=false) #{slot}
+         div
+            label(for='description') Description: 
+            input(type='textarea', placeholder="Item's description" name='description' required='true' value=(undefined===armorPiece ? '' : armorPiece.description))
+         div    
+            label(for='defense') Defense: 
+            input(type='number', placeholder="Item's armor rating" name='defense' required='true' value=(undefined===aromrPiece ? '' : armorPiece.defense))
+         div 
+            label(for='slot') Slot: 
+            select(type='select' placeholder='select a slot' required='true' name='slot')
+                for slot in slots 
+                    option(value=slot selected=false) #{slot}
         
-             button(type='submit') Submit  
+            button(type='submit') Submit  
 
-        if errors
-            ul
-                for error in errors
-                  li!= error.msg
+            if errors
+                ul
+                    for error in errors
+                      li!= error.msg

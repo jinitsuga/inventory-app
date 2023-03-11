@@ -113,9 +113,25 @@ exports.weapon_add_post = [
 ];
 // delete weapon
 exports.weapon_delete_get = (req, res, next) => {
-  // emulates buying a wep (removes from shop)
-  res.send("send form to delete weapon from shop");
+  async.parallel(
+    {
+      weapon(callback) {
+        Weapon.findById(req.params.id).exec(callback);
+      },
+    },
+    (err, result) => {
+      if (err) {
+        return next(err);
+      }
+      res.render("weapon_delete", {
+        title: "Delete a weapon",
+        weapon: result.weapon,
+        types: ["Swords", "Axes", "Spears", "Daggers", "Bows"],
+      });
+    }
+  );
 };
+
 exports.weapon_delete_post = (req, res, next) => {
   // emulates buying a wep (removes from shop)
   res.send("deleting weapon from shop' database");

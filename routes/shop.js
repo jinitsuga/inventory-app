@@ -48,23 +48,23 @@ router.get("/weapons", weapon_controller.weapons_list);
 
 router.get("/weapons/:id", weapon_controller.weapon_details);
 
-router.get("/weapon/add", weapon_controller.weapon_add_get);
+router.get("/weapons/add", weapon_controller.weapon_add_get);
 
-router.post("/weapon/add", weapon_controller.weapon_add_post);
+router.post("/weapons/add", weapon_controller.weapon_add_post);
 
-router.get("/weapon/:id/update", weapon_controller.weapon_update_get);
+router.get("/weapons/:id/delete", weapon_controller.weapon_delete_get);
 
-router.post("/weapon/:id/update", weapon_controller.weapon_update_post);
+router.post("/weapons/:id/delete", weapon_controller.weapon_delete_post);
 
-router.get("/weapon/:id/delete", weapon_controller.weapon_delete_get);
+router.get("/weapons/:id/update", weapon_controller.weapon_update_get);
 
-router.post("/weapon/:id/delete", weapon_controller.weapon_delete_post);
+router.post("/weapons/:id/update", weapon_controller.weapon_update_post);
 
 // Gem routes
 
 router.get("/gems", gem_controller.gems_list);
 
-router.get("gem/:id", gem_controller.gem_details);
+router.get("/gem/:id", gem_controller.gem_details);
 
 router.get("/gem/add", gem_controller.gem_add_get);
 

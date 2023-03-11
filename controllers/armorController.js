@@ -127,6 +127,7 @@ exports.armor_delete_get = (req, res, next) => {
     }
   );
 };
+
 exports.armor_delete_post = (req, res, next) => {
   Armor.findByIdAndRemove(req.body.pieceid, (err) => {
     if (err) {
@@ -178,7 +179,7 @@ exports.armor_update_post = [
   (req, res, next) => {
     const errors = validationResult(req);
 
-    const armorPiece = new Armor({
+    const pieceofarmor = new Armor({
       name: req.body.name,
       price: req.body.price,
       stock: req.stock,
@@ -194,15 +195,16 @@ exports.armor_update_post = [
         slots: ["Head", "Chest", "Legs", "Hands"],
         categories: results.categories,
         errors: errors.array(),
-        armorPiece: armorPiece,
+        armorPiece: pieceofarmor,
       });
+      return;
     }
-    return;
+
+    Armor.findByIdAndUpdate(req.params.id, pieceofarmor, {}, (err, piece) => {
+      if (err) {
+        return next(err);
+      }
+      res.redirect(piece.link);
+    });
   },
-  Armor.findByIdAndUpdate(req.params.id, armorPiece, {}, (err, piece) => {
-    if (err) {
-      return next(err);
-    }
-    res.redirect(piece.link);
-  }),
 ];

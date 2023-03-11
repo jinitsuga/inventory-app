@@ -32,15 +32,15 @@ router.get("/armor/add", armor_controller.armor_add_get);
 
 router.post("/armor/add", armor_controller.armor_add_post);
 
-router.get("/armor/:id/", armor_controller.armor_details);
-
-router.get("armor/:id/update", armor_controller.armor_update_get);
-
-router.post("armor/:id/update", armor_controller.armor_update_post);
-
 router.get("/armor/:id/delete", armor_controller.armor_delete_get);
 
 router.post("/armor/:id/delete", armor_controller.armor_delete_post);
+
+router.get("/armor/:id/update", armor_controller.armor_update_get);
+
+router.post("/armor/:id/update", armor_controller.armor_update_post);
+
+router.get("/armor/:id/", armor_controller.armor_details);
 
 // Weapon related routes
 

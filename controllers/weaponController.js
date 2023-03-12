@@ -207,6 +207,13 @@ exports.weapon_update_post = [
         types: ["Swords", "Axes", "Spears", "Daggers", "Bows"],
         weapon: weapon,
       });
+      return;
     }
+    Weapon.findByIdAndUpdate(req.params.id, weapon, {}, (err, weap) => {
+      if (err) {
+        return next(err);
+      }
+      res.redirect(weap.link);
+    });
   },
 ];
